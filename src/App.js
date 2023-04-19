@@ -26,18 +26,28 @@ const App = () => {
     return alert("browser not suppoting the app")
   }
 
+  
 
   return (
     <>
       <div className='container'>
-        <h1>
-          S P E E C H  -TO-  T E X T
-        </h1>
+        
+          <img className='title' src='./title.png' alt='img'></img>
+       
+        
         <h4>Speak to convert</h4>
 
-        <div className='main-content'>
-          <p>{transcript?transcript:"speak..."}</p>
+
+
+        <div className='main-content' >
+
+          <p>{transcript?transcript:"speak"}{listening?<span> . . .</span>:<span></span>}</p>
+       
+       
         </div>
+
+
+
 
         <div className='icons'>
           <p><i>Microphone:</i> {listening ? 'on' : 'off'}</p>
@@ -58,8 +68,8 @@ const App = () => {
           <button onClick={resetTranscript}>clear</button>
 
           <select value={lang} onChange={handleLanguage}>
-            <option value={"hi-IN"}>English</option>
-            <option value={"hi-IN"}>HINDI</option>
+            <option value={"en-IN"}>English</option>
+            <option value={"hi-IN"}>Hindi</option>
             <option value={"fr-FR"}>French</option>
             <option value={"es-ES"}>Spanish</option>
             <option value={"ru-RU"}>Russian</option>
