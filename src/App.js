@@ -16,12 +16,19 @@ const App = () => {
   const startlisten = () => { SpeechRecognition.startListening({ continuous: true, language: lang }) }
   const stoplisten = () => { SpeechRecognition.stopListening(); }
 
-
+  const listentoggle=()=>{
+    if(listening)
+      stoplisten();
+    else 
+    startlisten();
+  }
 
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition()
 
   const [isCopied, setCopied] = useClipboard(transcript);
 
+ 
+  
   if (!browserSupportsSpeechRecognition) {
     return alert("browser not suppoting the app")
   }
@@ -41,11 +48,10 @@ const App = () => {
 
         <div className='main-content' >
 
-          <p>{transcript?transcript:"speak"}{listening?<span> . . .</span>:<span></span>}</p>
+          <p>{transcript?transcript:"speak..."}{listening?<span> . . .</span>:<span></span>}</p>
        
        
         </div>
-
 
 
 
@@ -56,6 +62,11 @@ const App = () => {
         <p><i>Copied:</i> {isCopied ? "Yes!" : "Nope!"}</p>
 
         </div>
+
+        <div>
+        <img onClick={listentoggle} className='micImg' src={listening?"./mic2.png":'./mic.png'} alt='mic img'></img>
+
+        </div>
         
         <div className='btn-box'>
 
@@ -63,8 +74,6 @@ const App = () => {
             copy
           </button>
 
-          <button onClick={startlisten}>start listening</button>
-          <button onClick={stoplisten}>stop listening</button>
           <button onClick={resetTranscript}>clear</button>
 
           <select value={lang} onChange={handleLanguage}>

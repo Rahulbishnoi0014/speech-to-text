@@ -8,7 +8,7 @@ background-image: url("./img.jpg");
  background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  height: 100vh;
+  height: 100%;
 }
 
 
@@ -35,15 +35,17 @@ background-image: url("./img.jpg");
   overflow: scroll;
   width: 400px;
 
+  position: relative;
+
   border: 1px solid white;
   margin: 10px;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .main-content p{
-  /* width: max-content; */
   margin: 0;
-line-height: 2rem;
+  padding: 0;
+line-height: 1rem;
 }
 .main-content::-webkit-scrollbar{
   display: none;
@@ -105,6 +107,18 @@ span{
     100%{opacity: 1;}
 }
 
+.micImg{
+  height: 4rem;
+  
+  background-color: white;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.micImg:active{
+  background-color: rgba(143, 143, 143, 0.449);
+}
+
 @media screen and  (max-width: 800px) {  
 
   .title{
@@ -118,15 +132,23 @@ span{
 
   .icons,.btn-box{
     width: 90%;
-    line-height: 0.5rem;
+    line-height: 0.1rem;
     font-size: 1.3rem;
+    
+  }
+  .icons p{
+    margin: 10px;
+  }
+  .micImg{
+    margin: 1rem;
   }
   .main-content p{
     font-size: 1.7rem;
   }
 
-  button{
+  button,select{
     font-size: 1.5rem;
+    margin:0.5rem;
   }
 
 }
